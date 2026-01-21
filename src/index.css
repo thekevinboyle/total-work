@@ -1,0 +1,34 @@
+:root {
+  --color-bg: #000000;
+  --color-text: #ffffff;
+  --color-text-dim: #888888;
+  --color-accent: #ffffff;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --line-height: 1.4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
