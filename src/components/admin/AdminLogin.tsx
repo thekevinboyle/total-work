@@ -94,6 +94,11 @@ export function AdminLogin() {
       } else {
         setSuccess('ACCOUNT CREATED. Check email to verify.')
         resetForm()
+        // Return to login after showing success message
+        setTimeout(() => {
+          switchMode('login')
+          setSuccess('ACCOUNT CREATED. Check email to verify, then login.')
+        }, 1500)
       }
       setLoading(false)
     },
