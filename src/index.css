@@ -1,9 +1,17 @@
+@font-face {
+  font-family: 'ISO';
+  src: url('/fonts/ISOv0.7-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-bg: #000000;
   --color-text: #ffffff;
   --color-text-dim: #888888;
   --color-accent: #ffffff;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-main: 'ISO', 'IBM Plex Mono', monospace;
   --line-height: 1.4;
 }
 
@@ -21,11 +29,19 @@ html, body, #root {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-mono);
+  font-family: var(--font-main);
   font-size: 14px;
   line-height: var(--line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input, button, textarea {
+  font-family: var(--font-main);
+}
+
+pre {
+  font-family: var(--font-main);
 }
 
 ::selection {
