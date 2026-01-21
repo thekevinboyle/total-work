@@ -171,7 +171,7 @@ export function AdminLogin() {
           <pre className="admin-login__ascii">
 {`
 ╔══════════════════════════════════════╗
-║     BASEMENT ADMIN TERMINAL v1.0     ║
+║     NARCOTIC ADMIN TERMINAL v1.0     ║
 ║          AUTHORIZED ACCESS ONLY      ║
 ╚══════════════════════════════════════╝
 `}
@@ -263,7 +263,7 @@ export function AdminLogin() {
 
         <footer className="admin-login__footer">
           <span>CONNECTION SECURE</span>
-          <span>&copy; 2026 BASEMENT</span>
+          <span>&copy; 2026 NARCOTIC</span>
         </footer>
       </div>
     </div>

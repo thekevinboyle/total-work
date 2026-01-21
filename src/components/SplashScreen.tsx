@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { TypewriterLines } from './TypewriterLines'
 import { PasswordInput } from './PasswordInput'
-import { FACE_ASCII, LOGO_ASCII } from '../assets/ascii'
+import { FACE_ASCII, NARCOTIC_ASCII } from '../assets/ascii'
 import './SplashScreen.css'
 
 interface SplashScreenProps {
@@ -15,7 +15,7 @@ export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
 
   const headerLine = '================================================================+ WELCOME TO +================================================================'
   const faceLines = FACE_ASCII.split('\n')
-  const logoLines = LOGO_ASCII.split('\n')
+  const logoLines = NARCOTIC_ASCII.split('\n')
 
   return (
     <div className="splash-screen">
@@ -42,7 +42,7 @@ export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
             <div className="splash-panel splash-panel--right">
               <TypewriterLines lines={logoLines} speed={1} />
               <div className="splash-meta">
-                <span>Presented by BASEMENT</span>
+                <span>Presented by NARCOTIC</span>
                 <span>© 2026</span>
               </div>
             </div>

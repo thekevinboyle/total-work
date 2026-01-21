@@ -11,7 +11,7 @@ export function AdminNav() {
   return (
     <nav className="admin-nav">
       <div className="admin-nav__brand">
-        <span>BASEMENT_ADMIN</span>
+        <span>NARCOTIC_ADMIN</span>
       </div>
       <div className="admin-nav__links">
         <Link
