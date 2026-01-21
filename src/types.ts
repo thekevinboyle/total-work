@@ -9,3 +9,6 @@ export interface BlogPost {
   content: string
   image?: string
 }
+
+// Re-export database types
+export type { Post, PostInsert, PostUpdate } from './types/database'
