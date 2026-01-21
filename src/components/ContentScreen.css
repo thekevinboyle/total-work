@@ -1,0 +1,37 @@
+/* src/components/ContentScreen.css */
+.content-screen {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-header {
+  padding: 1rem;
+  flex-shrink: 0;
+}
+
+.content-header__line {
+  text-align: center;
+  color: var(--color-text-dim);
+  overflow: hidden;
+}
+
+.content-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 2rem 2rem;
+}
+
+.content-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-main::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+.content-main::-webkit-scrollbar-thumb {
+  background: var(--color-text-dim);
+}

@@ -1,0 +1,36 @@
+/* src/components/BlogPost.css */
+.blog-post {
+  padding: 1.5rem 0;
+}
+
+.blog-post__header {
+  margin-bottom: 1rem;
+}
+
+.blog-post__date {
+  color: var(--color-text-dim);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post__title {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.blog-post__content {
+  padding-left: 1rem;
+}
+
+.blog-post__content p {
+  max-width: 60ch;
+}
+
+.blog-post__image {
+  margin-top: 1rem;
+  max-width: 100%;
+  height: auto;
+  filter: grayscale(100%) contrast(1.2);
+}

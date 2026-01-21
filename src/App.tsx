@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import type { AppState } from './types'
 import { BootScreen } from './components/BootScreen'
 import { SplashScreen } from './components/SplashScreen'
+import { ContentScreen } from './components/ContentScreen'
 
 function App() {
   const [appState, setAppState] = useState<AppState>('boot')
@@ -51,7 +52,7 @@ function App() {
       {appState === 'splash' && (
         <SplashScreen onPasswordSuccess={handlePasswordSuccess} />
       )}
-      {appState === 'content' && <div>Content Screen Placeholder</div>}
+      {appState === 'content' && <ContentScreen />}
     </div>
   )
 }
