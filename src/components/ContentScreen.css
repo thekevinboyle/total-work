@@ -12,10 +12,32 @@
   flex-shrink: 0;
 }
 
+.content-header__ascii {
+  font-size: 8px;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--color-text);
+  margin: 0 auto 1rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
 .content-header__line {
   text-align: center;
   color: var(--color-text-dim);
   overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .content-header__ascii {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-header__ascii {
+    font-size: 4px;
+  }
 }
 
 .content-main {

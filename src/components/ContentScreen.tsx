@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { BlogPost } from './BlogPost'
 import { postsService } from '../services/posts'
 import type { Post } from '../types'
+import { TWINS_ASCII } from '../assets/ascii/twins'
 import './ContentScreen.css'
 
 // Helper to format date from ISO to "01.01.2026"
@@ -92,6 +93,14 @@ export function ContentScreen() {
   return (
     <div className="content-screen">
       <header className="content-header">
+        <motion.pre
+          className="content-header__ascii"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {TWINS_ASCII}
+        </motion.pre>
         <div className="content-header__line">
           ════════════════════════════════════════════════════════════════════════════════
         </div>
