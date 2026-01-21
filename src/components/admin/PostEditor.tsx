@@ -60,6 +60,7 @@ export function PostEditor() {
       navigate('/admin')
     } catch (err) {
       setError('ERROR: Failed to save post')
+    } finally {
       setSaving(false)
     }
   }
