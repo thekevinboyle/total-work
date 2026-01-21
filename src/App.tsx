@@ -1,7 +1,7 @@
 // src/App.tsx
 import { useState, useEffect, useCallback } from 'react'
 import type { AppState } from './types'
-import { Typewriter } from './components/Typewriter'
+import { BootScreen } from './components/BootScreen'
 
 function App() {
   const [appState, setAppState] = useState<AppState>('boot')
@@ -47,11 +47,7 @@ function App() {
 
   return (
     <div className="app">
-      {appState === 'boot' && (
-        <div style={{ padding: '2rem' }}>
-          <Typewriter text="Hello! Press any key to continue." speed={50} />
-        </div>
-      )}
+      {appState === 'boot' && <BootScreen />}
       {appState === 'splash' && <div>Splash Screen Placeholder</div>}
       {appState === 'content' && <div>Content Screen Placeholder</div>}
     </div>
