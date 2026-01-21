@@ -1,10 +1,14 @@
 // src/services/posts.ts
-import { supabase } from '../lib/supabase'
+import { supabase, isSupabaseConfigured } from '../lib/supabase'
 import type { Post, PostInsert, PostUpdate } from '../types'
 
 export const postsService = {
   // Get all posts (admin)
   async getAll(): Promise<Post[]> {
+    if (!isSupabaseConfigured || !supabase) {
+      console.warn('Supabase not configured - returning empty posts')
+      return []
+    }
     const { data, error } = await supabase
       .from('posts')
       .select('*')
@@ -16,6 +20,10 @@ export const postsService = {
 
   // Get published posts only (public)
   async getPublished(): Promise<Post[]> {
+    if (!isSupabaseConfigured || !supabase) {
+      console.warn('Supabase not configured - returning empty posts')
+      return []
+    }
     const { data, error } = await supabase
       .from('posts')
       .select('*')
@@ -28,6 +36,10 @@ export const postsService = {
 
   // Get single post by ID
   async getById(id: string): Promise<Post | null> {
+    if (!isSupabaseConfigured || !supabase) {
+      console.warn('Supabase not configured - returning null')
+      return null
+    }
     const { data, error } = await supabase
       .from('posts')
       .select('*')
@@ -40,6 +52,9 @@ export const postsService = {
 
   // Create new post
   async create(post: PostInsert): Promise<Post> {
+    if (!isSupabaseConfigured || !supabase) {
+      throw new Error('Supabase not configured - cannot create posts')
+    }
     const { data, error } = await supabase
       .from('posts')
       .insert(post)
@@ -52,6 +67,9 @@ export const postsService = {
 
   // Update post
   async update(id: string, updates: PostUpdate): Promise<Post> {
+    if (!isSupabaseConfigured || !supabase) {
+      throw new Error('Supabase not configured - cannot update posts')
+    }
     const { data, error } = await supabase
       .from('posts')
       .update(updates)
@@ -65,6 +83,9 @@ export const postsService = {
 
   // Delete post
   async delete(id: string): Promise<void> {
+    if (!isSupabaseConfigured || !supabase) {
+      throw new Error('Supabase not configured - cannot delete posts')
+    }
     const { error } = await supabase
       .from('posts')
       .delete()
