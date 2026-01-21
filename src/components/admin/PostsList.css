@@ -1,0 +1,95 @@
+/* src/components/admin/PostsList.css */
+.posts-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-text-dim);
+}
+
+.posts-list__header h1 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.posts-list__loading,
+.posts-list__empty {
+  color: var(--color-text-dim);
+  padding: 2rem 0;
+}
+
+.posts-list__empty a {
+  color: var(--color-text);
+}
+
+.posts-list__error {
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+}
+
+.posts-list__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.posts-list__table th,
+.posts-list__table td {
+  text-align: left;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--color-text-dim);
+}
+
+.posts-list__table th {
+  color: var(--color-text-dim);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.posts-list__status {
+  background: none;
+  border: none;
+  color: var(--color-text-dim);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.posts-list__status--published {
+  color: #4ade80;
+}
+
+.posts-list__title {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.posts-list__date {
+  color: var(--color-text-dim);
+  font-size: 12px;
+}
+
+.posts-list__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.posts-list__actions a,
+.posts-list__actions button {
+  color: var(--color-text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.posts-list__actions a:hover,
+.posts-list__actions button:hover {
+  text-decoration: underline;
+}
