@@ -56,7 +56,11 @@ export function AdminLogin() {
       const { error } = await signIn(email, password)
 
       if (error) {
-        setError('ACCESS DENIED: Invalid credentials')
+        if (error.message.includes('Email not confirmed')) {
+          setError('ERROR: Email not verified. Check your inbox.')
+        } else {
+          setError(`ACCESS DENIED: ${error.message}`)
+        }
         setPassword('')
       } else {
         navigate('/admin')
