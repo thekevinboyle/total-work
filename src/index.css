@@ -32,3 +32,15 @@ body {
   background: var(--color-text);
   color: var(--color-bg);
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 10px;
+  }
+}

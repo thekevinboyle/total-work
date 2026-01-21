@@ -61,3 +61,17 @@
   padding: 1rem 0;
   border-top: 1px solid var(--color-text-dim);
 }
+
+@media (max-width: 768px) {
+  .splash-panels {
+    flex-direction: column;
+  }
+
+  .splash-panel {
+    font-size: 8px;
+  }
+
+  .splash-divider {
+    display: none;
+  }
+}
