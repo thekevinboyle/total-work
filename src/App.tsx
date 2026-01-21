@@ -1,5 +1,6 @@
 // src/App.tsx
 import { useState, useEffect, useCallback } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import type { AppState } from './types'
 import { BootScreen } from './components/BootScreen'
 import { SplashScreen } from './components/SplashScreen'
@@ -7,13 +8,10 @@ import { ContentScreen } from './components/ContentScreen'
 
 function App() {
   const [appState, setAppState] = useState<AppState>('boot')
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  // Check if already authenticated (session storage)
   useEffect(() => {
     const auth = sessionStorage.getItem('bbs-auth')
     if (auth === 'true') {
-      setIsAuthenticated(true)
       setAppState('content')
     }
   }, [])
@@ -26,14 +24,9 @@ function App() {
 
   const handlePasswordSuccess = useCallback(() => {
     sessionStorage.setItem('bbs-auth', 'true')
-    setIsAuthenticated(true)
     setAppState('content')
   }, [])
 
-  // TODO: isAuthenticated will be used by child components
-  void isAuthenticated
-
-  // Global keypress listener for boot state
   useEffect(() => {
     if (appState === 'boot') {
       const handler = () => handleKeyPress()
@@ -47,12 +40,44 @@ function App() {
   }, [appState, handleKeyPress])
 
   return (
-    <div className="app">
-      {appState === 'boot' && <BootScreen />}
-      {appState === 'splash' && (
-        <SplashScreen onPasswordSuccess={handlePasswordSuccess} />
-      )}
-      {appState === 'content' && <ContentScreen />}
+    <div className="app" style={{ height: '100%' }}>
+      <AnimatePresence mode="wait">
+        {appState === 'boot' && (
+          <motion.div
+            key="boot"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ height: '100%' }}
+          >
+            <BootScreen />
+          </motion.div>
+        )}
+        {appState === 'splash' && (
+          <motion.div
+            key="splash"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            style={{ height: '100%' }}
+          >
+            <SplashScreen onPasswordSuccess={handlePasswordSuccess} />
+          </motion.div>
+        )}
+        {appState === 'content' && (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ height: '100%' }}
+          >
+            <ContentScreen />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
