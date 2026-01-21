@@ -41,6 +41,7 @@ function toBlogPost(post: Post) {
 export function ContentScreen() {
   const [posts, setPosts] = useState<ReturnType<typeof toBlogPost>[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -49,6 +50,7 @@ export function ContentScreen() {
         setPosts(data.map(toBlogPost))
       } catch (err) {
         console.error('Failed to load posts:', err)
+        setError('FAILED TO LOAD POSTS')
       } finally {
         setLoading(false)
       }
@@ -67,6 +69,21 @@ export function ContentScreen() {
         </header>
         <main className="content-main">
           <div style={{ color: 'var(--color-text-dim)' }}>LOADING POSTS...</div>
+        </main>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="content-screen">
+        <header className="content-header">
+          <div className="content-header__line">
+            ════════════════════════════════════════════════════════════════════════════════
+          </div>
+        </header>
+        <main className="content-main">
+          <div style={{ color: '#ff6b6b' }}>ERROR: {error}</div>
         </main>
       </div>
     )
