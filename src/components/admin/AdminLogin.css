@@ -15,13 +15,15 @@
 
 .admin-login__header {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .admin-login__ascii {
   font-size: 12px;
   line-height: 1.2;
   color: var(--color-text);
-  margin: 0;
+  margin: 0 auto;
+  display: inline-block;
 }
 
 .admin-login__content {
