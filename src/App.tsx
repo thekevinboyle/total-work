@@ -2,6 +2,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { AppState } from './types'
 import { BootScreen } from './components/BootScreen'
+import { SplashScreen } from './components/SplashScreen'
 
 function App() {
   const [appState, setAppState] = useState<AppState>('boot')
@@ -28,9 +29,8 @@ function App() {
     setAppState('content')
   }, [])
 
-  // TODO: isAuthenticated and handlePasswordSuccess will be used by child components
+  // TODO: isAuthenticated will be used by child components
   void isAuthenticated
-  void handlePasswordSuccess
 
   // Global keypress listener for boot state
   useEffect(() => {
@@ -48,7 +48,9 @@ function App() {
   return (
     <div className="app">
       {appState === 'boot' && <BootScreen />}
-      {appState === 'splash' && <div>Splash Screen Placeholder</div>}
+      {appState === 'splash' && (
+        <SplashScreen onPasswordSuccess={handlePasswordSuccess} />
+      )}
       {appState === 'content' && <div>Content Screen Placeholder</div>}
     </div>
   )
