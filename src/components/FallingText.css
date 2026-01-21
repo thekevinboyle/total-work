@@ -1,0 +1,9 @@
+/* src/components/FallingText.css */
+.falling-text {
+  display: inline;
+}
+
+.falling-char {
+  display: inline-block;
+  white-space: pre;
+}

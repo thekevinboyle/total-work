@@ -1,7 +1,7 @@
 // src/components/SplashScreen.tsx
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Typewriter } from './Typewriter'
+import { FallingText } from './FallingText'
 import { PasswordInput } from './PasswordInput'
 import { NARCOTIC_ASCII } from '../assets/ascii'
 import './SplashScreen.css'
@@ -17,10 +17,10 @@ export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
     <div className="splash-screen">
       <div className="splash-logo-container">
         <pre className="splash-logo">
-          <Typewriter
+          <FallingText
             text={NARCOTIC_ASCII}
-            speed={5}
-            cursor={false}
+            delayPerChar={2}
+            fallDuration={0.3}
             onComplete={() => setLogoComplete(true)}
           />
         </pre>
@@ -29,9 +29,9 @@ export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
       {logoComplete && (
         <motion.div
           className="splash-footer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <div className="splash-meta">
             <span>Presented by NARCOTIC</span>
