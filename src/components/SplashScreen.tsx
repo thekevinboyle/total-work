@@ -1,5 +1,4 @@
 // src/components/SplashScreen.tsx
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { PasswordInput } from './PasswordInput'
 import { NARCOTIC_ASCII } from '../assets/ascii'
@@ -10,14 +9,6 @@ interface SplashScreenProps {
 }
 
 export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
-  const [showContent, setShowContent] = useState(false)
-
-  // Trigger content display after a short delay
-  useState(() => {
-    const timer = setTimeout(() => setShowContent(true), 500)
-    return () => clearTimeout(timer)
-  })
-
   return (
     <div className="splash-screen">
       <motion.div
