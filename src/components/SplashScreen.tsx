@@ -1,9 +1,8 @@
 // src/components/SplashScreen.tsx
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { TypewriterLines } from './TypewriterLines'
 import { PasswordInput } from './PasswordInput'
-import { FACE_ASCII, NARCOTIC_ASCII } from '../assets/ascii'
+import { NARCOTIC_ASCII } from '../assets/ascii'
 import './SplashScreen.css'
 
 interface SplashScreenProps {
@@ -11,51 +10,43 @@ interface SplashScreenProps {
 }
 
 export function SplashScreen({ onPasswordSuccess }: SplashScreenProps) {
-  const [headerComplete, setHeaderComplete] = useState(false)
+  const [showContent, setShowContent] = useState(false)
 
-  const headerLine = '================================================================+ WELCOME TO +================================================================'
-  const faceLines = FACE_ASCII.split('\n')
-  const logoLines = NARCOTIC_ASCII.split('\n')
+  // Trigger content display after a short delay
+  useState(() => {
+    const timer = setTimeout(() => setShowContent(true), 500)
+    return () => clearTimeout(timer)
+  })
 
   return (
     <div className="splash-screen">
-      <header className="splash-header">
-        <TypewriterLines
-          lines={[headerLine]}
-          speed={2}
-          onComplete={() => setHeaderComplete(true)}
-        />
-      </header>
+      <motion.div
+        className="splash-logo-container"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <pre className="splash-logo">{NARCOTIC_ASCII}</pre>
+      </motion.div>
 
-      {headerComplete && (
-        <motion.div
-          className="splash-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="splash-panels">
-            <div className="splash-panel splash-panel--left">
-              <TypewriterLines lines={faceLines} speed={1} />
-            </div>
-            <div className="splash-divider">│</div>
-            <div className="splash-panel splash-panel--right">
-              <TypewriterLines lines={logoLines} speed={1} />
-              <div className="splash-meta">
-                <span>Presented by NARCOTIC</span>
-                <span>© 2026</span>
-              </div>
-            </div>
-          </div>
+      <motion.div
+        className="splash-footer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+      >
+        <div className="splash-meta">
+          <span>Presented by NARCOTIC</span>
+          <span>© 2026</span>
+        </div>
 
-          <div className="splash-password">
-            <PasswordInput
-              password={import.meta.env.VITE_PASSWORD || 'basement'}
-              onSuccess={onPasswordSuccess}
-            />
-          </div>
-        </motion.div>
-      )}
+        <div className="splash-password">
+          <PasswordInput
+            password={import.meta.env.VITE_PASSWORD || 'basement'}
+            onSuccess={onPasswordSuccess}
+          />
+        </div>
+      </motion.div>
     </div>
   )
 }
